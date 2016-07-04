@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <net.kenit.hieptran.beentogether.utils.cropimage.CropZoomImageView
+        android:id="@+id/iv_crop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <net.kenit.hieptran.beentogether.utils.cropimage.CropImageBorderView
+        android:id="@+id/borderView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</merge>
