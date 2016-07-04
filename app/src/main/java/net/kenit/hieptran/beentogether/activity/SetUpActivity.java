@@ -14,7 +14,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import net.kenit.hieptran.beentogether.R;
+import net.kenit.hieptran.beentogether.model.Lover;
 import net.kenit.hieptran.beentogether.utils.Utils;
 import net.kenit.hieptran.beentogether.utils.cropimage.FileUtils;
 
@@ -37,6 +41,9 @@ public class SetUpActivity extends AppCompatActivity {
     private EditText maleEdt, femaleEdt;
     private AppCompatButton mBtnSetCover, mBtnSetDate;
     private AppCompatTextView mTxtCover, mTxtDate;
+    private Gson mGson;
+    private Lover mMaleLover, mFemaleLover;
+    private String mAvataMale, mAvataFemale;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +68,9 @@ public class SetUpActivity extends AppCompatActivity {
                 showPhotoDialog(Utils.LOVER_TYPE.FEMALE);
             }
         });
+        mMaleLover = new Lover();
+        mFemaleLover = new Lover();
+        mGson = new GsonBuilder().create();
     }
 
     private void showPhotoDialog(final Utils.LOVER_TYPE type) {
@@ -103,13 +113,12 @@ public class SetUpActivity extends AppCompatActivity {
             case REQUEST_CROP:
                 if (resultCode == RESULT_OK)
                     maleImage.setImageURI(data.getData());
-                Utils.saveAvatar(Utils.LOVER_TYPE.MALE,maleImage);
+                mAvataMale = Utils.saveAvatar(Utils.LOVER_TYPE.MALE, maleImage);
                 break;
             case REQUEST_CROP_FEMALE:
                 if (resultCode == RESULT_OK)
                     femaleImage.setImageURI(data.getData());
-                Utils.saveAvatar(Utils.LOVER_TYPE.MALE,maleImage);
-
+                mAvataFemale = Utils.saveAvatar(Utils.LOVER_TYPE.MALE, maleImage);
                 break;
         }
         /*if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {

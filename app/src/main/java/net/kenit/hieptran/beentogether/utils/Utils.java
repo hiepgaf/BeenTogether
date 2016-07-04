@@ -1,10 +1,13 @@
 package net.kenit.hieptran.beentogether.utils;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -47,5 +50,17 @@ public class Utils {
 
         }
         return imageNameForSDCard;
+    }
+
+    public static void saveLover(Context context,String json,String key) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(key,json);
+        editor.apply();
+    }
+
+    public static String getLover(Context context,String key) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getString(key,"0");
     }
 }

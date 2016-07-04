@@ -23,6 +23,7 @@ public class Lover {
         Type = type;
     }
 
+    public Lover() {}
     public String getName() {
         return Name;
     }
