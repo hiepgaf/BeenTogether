@@ -49,7 +49,6 @@ public class SetUpActivity extends AppCompatActivity {
         mBtnSetDate = (AppCompatButton) findViewById(R.id.btn_set_date);
         mTxtCover = (AppCompatTextView) findViewById(R.id.txt_cover_info);
         mTxtDate = (AppCompatTextView) findViewById(R.id.txt_date_info);
-
         maleImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,10 +103,13 @@ public class SetUpActivity extends AppCompatActivity {
             case REQUEST_CROP:
                 if (resultCode == RESULT_OK)
                     maleImage.setImageURI(data.getData());
+                Utils.saveAvatar(Utils.LOVER_TYPE.MALE,maleImage);
                 break;
             case REQUEST_CROP_FEMALE:
                 if (resultCode == RESULT_OK)
                     femaleImage.setImageURI(data.getData());
+                Utils.saveAvatar(Utils.LOVER_TYPE.MALE,maleImage);
+
                 break;
         }
         /*if (requestCode == REQUEST_CAMERA && resultCode == RESULT_OK) {
